@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer New</title>
+    <style>
+        @font-face {
+            font-family: digital;
+            src: url(DS-DIGI.TTF);
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+
+        div#corpo-relogio {
+            width: 350px;
+            border: 2px solid #000000;
+            background-color: #ddd;
+            display: grid;
+            grid-template-columns: 1fr;
+            place-content: left;
+            place-items: left;
+            row-gap: 10px;
+            padding: 20px;
+        }
+
+        div#alarme {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div#visor-relogio {
+            width: 100%;
+            background-color: #000000;
+            color: #0f0;
+            text-align: center;
+            font-size: 2rem;
+            font-family: digital;
+            font-weight: 600;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 5px;
+        }
+
+        div#hora-alarme {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+
+        div#tempo-alarme {
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        div#selecionar-hora {
+            width: 100%;
+        }
+
+        div#selecionar-hora input[type=number] {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #000000;
+            background-color: #ffffff;
+            border-radius: 5px;
+            font-size: large;
+        }
+
+        div#botoes-funcoes {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            column-gap: 20px;
+        }
+
+        div#botoes-funcoes button {
+            width: 150px;
+            border: none;
+            height: 35px;
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .alarme {
+            background-color: #f00 !important;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="corpo-relogio">
+        <div id="alarme">
+            <div id="visor-relogio">
+            </div>
+        </div>
+        <div id="hora-alarme">
+            <span id="indicador">Hora do alarme:</span>
+        </div>
+        <div id="tempo-alarme">
+            <span id="tempo-segundos">Tempo do alarme(segundos):</span>
+        </div>
+        <div id="selecionar-hora">
+            <input type="number" name="" id="timer-alarme" min="0" value="0">
+        </div>
+        <div id="botoes-funcoes">
+            <button id="btn-ativar">Ativar</button>
+            <button id="btn-parar">Parar</button>
+        </div>
+    </div>
+
+    <script>
+        const relogio = document.querySelector("#corpo-relogio")
+        const visorRelogio = document.querySelector("#visor-relogio")
+        const horaAlarme = document.querySelector("#hora-alarme")
+        const tempoAlarme = document.querySelector("#tempo-alarme")
+        const inputTimer = document.querySelector("#timer-alarme")
+        const buttonAtivar = document.querySelector("#btn-ativar")
+        const buttonParar = document.querySelector("#btn-parar")
+
+        console.log(relogio)
+
+        let audio = new Audio("Tchaikovsky-Valse-Sentimentale.mp3")
+        audio.loop = -1
+        let ts_atual = null
+        let ts_alarme = null
+        let alarme_ativado = false
+        let alarme_tocando = false
+
+        const span = document.createElement("span")
+        span.textContent = " "
+
+        function horaAcionadaAtual() {
+            const tempo = new Date()
+            const hora = tempo.getHours() < 10 ? "0" + tempo.getHours() : tempo.getHours()
+            const minutos = tempo.getMinutes() < 10 ? "0" + tempo.getMinutes() : tempo.getMinutes()
+            const segundos = tempo.getSeconds() < 10 ? "0" + tempo.getSeconds() : tempo.getSeconds()
+            const horaFormatada = `${hora}:${minutos}:${segundos}`
+            visorRelogio.textContent = horaFormatada
+            if(alarme_ativado && !alarme_tocando) {
+                if(tempo.getTime() >= ts_alarme) {
+                    alarme_tocando = true
+                    audio.play()
+                    relogio.classList.add("alarme")
+                }
+            }
+        }
+
+        function horaResetada() {
+            alarme_ativado = false
+            alarme_tocando = false
+            horaAlarme.removeChild(span)
+            inputTimer.value = 0
+            relogio.classList.remove("alarme")
+            audio.pause()
+            audio.currentTime = 0
+        }
+
+        setInterval(horaAcionadaAtual, 1000)
+
+        function definirAlarme() {
+            span.setAttribute("id", "tempo-acrescido")
+            horaAlarme.appendChild(span)
+            ts_atual = Date.now()
+            ts_alarme = ts_atual + (inputTimer.value * 1000)
+            alarme_ativado = true
+            const dt_alarme = new Date(ts_alarme)
+            const horaTimer = dt_alarme.getHours() < 10 ? "0" + dt_alarme.getHours() : dt_alarme.getHours()
+            const minutosTimer = dt_alarme.getMinutes() < 10 ? "0" + dt_alarme.getMinutes() : dt_alarme.getMinutes()
+            const segundosTimer = dt_alarme.getSeconds() < 10 ? "0" + dt_alarme.getSeconds() : dt_alarme.getSeconds()
+            const timerFormatado = `${horaTimer}:${minutosTimer}:${segundosTimer}`
+            span.textContent = timerFormatado
+        }
+
+        buttonAtivar.addEventListener("click", definirAlarme)
+        buttonParar.addEventListener("click", horaResetada)
+    </script>
+</body>
+
+</html>

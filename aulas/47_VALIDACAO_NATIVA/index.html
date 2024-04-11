@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudos sobre Validação Nativa</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <form>
+        <label for="f_nome">nome</label>
+        <input type="text" id="f_nome" minlength="4" maxlength="8" required>
+        <label for="f_nota">Nota</label>
+        <input type="number" id="f_nota" min="0" max="10" required>
+        <button id="btn_validar">validar</button>
+        <p id="f_msg"></p>
+    </form>
+</body>
+
+</html>

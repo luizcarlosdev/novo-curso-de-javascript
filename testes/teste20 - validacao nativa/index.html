@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário com validação nativa</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <form>
+        <div class="input">
+            <label for="f_nome">Nome</label>
+            <input type="text" id="f_nome" minlength="3" maxlength="20" required>
+        </div>
+
+        <div class="input">
+            <label for="f_idade">Idade</label>
+            <input type="number" id="f_idade" min="15" max="85" required>
+        </div>
+
+        <p id="f_msg"></p>
+
+        <div class="button_submit_div">
+            <button id="btn_validar">Validar registro</button>
+        </div>
+    </form>
+</body>
+
+</html>

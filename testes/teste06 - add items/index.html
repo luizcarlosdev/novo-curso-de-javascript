@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iterando Arrays</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            column-gap: 10px;
+        }
+
+        .caixa {
+            width: 350px;
+            height: 500px;
+            background-color: #eee;
+            border: 5px solid #888;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            row-gap: 10px;
+        }
+
+        .bloco {
+            width: 80%;
+            height: 30px;
+            background-color: #999;
+            border: 3px solid #444;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #ffffff;
+            padding: 5px 10px;
+        }
+
+        #btn-add {
+            width: 150px;
+            height: 40px;
+            background-color: #008;
+            color: #ffffff;
+            font-size: 1.2rem;
+            border-radius: 5px;
+        }
+
+        .red {
+            width: 80%;
+            height: 30px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #ffffff;
+            padding: 5px 10px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="caixa1" class="caixa">
+        <!-- <div class="bloco">
+
+        </div> -->
+    </div>
+
+    <button id="btn-add">Adicionar</button>
+
+    <div id="caixa2" class="caixa"></div>
+
+    <script>
+        let cursos = ["HTML5", "CSS", "Javascript", "Java", "PHP", "Typescript", "React Js", "Node"]
+        cursos.map((el) => {
+            const caixa1 = document.querySelector("#caixa1")
+            const div = document.createElement("div")
+            div.setAttribute("class", "bloco")
+            const span = document.createElement("span")
+            span.innerHTML = el
+            div.appendChild(span)
+            caixa1.appendChild(div)
+            div.addEventListener("click", (event) => {
+                div.classList.toggle("red")
+            })
+            const radio = document.createElement("input")
+            radio.setAttribute("type", "radio")
+            radio.setAttribute("name", "r")
+            const caixa2 = document.querySelector("#caixa2")
+            const button = document.querySelector("#btn-add")
+            button.addEventListener("click", () => {
+                if (div.classList.contains("red")) {
+                    !div.classList.toggle("red")
+                    div.style.background = "#f00"
+                    div.appendChild(radio)
+                    caixa2.appendChild(div)
+                }
+            })
+            radio.addEventListener("click", () => {
+                if (radio.checked) {
+                    console.log(radio.parentNode)
+                    radio.parentNode.classList.add("ele")
+                }
+            })
+            button.addEventListener("click", () => {
+                if (div.classList.contains("ele")) {
+                    if (radio.checked) {
+                        div.remove()
+                    }
+                }
+            })
+            button.addEventListener("click" ,() => {
+                if(!caixa1.hasChildNodes()) {
+                   console.log("ok")
+                }
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>

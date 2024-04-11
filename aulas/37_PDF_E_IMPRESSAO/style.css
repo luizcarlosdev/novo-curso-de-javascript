@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+button {
+    background-color: #eee;
+    padding: 10px 50px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+button:hover {
+    outline: 5px solid #f09;
+}
+
+table {
+    width: 300px;
+    font: 17px Calibri;
+}
+
+table, th, td {
+    border: 1px solid #DDD;
+    border-collapse: collapse;
+    padding: 2px 3px;
+    text-align: center;
+}

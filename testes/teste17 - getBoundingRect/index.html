@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibindo informações sobre elementos</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            list-style-type: none;
+            border: none;
+            text-decoration: none;
+        }
+
+        header {
+            width: 100%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & li {
+                display: inline-block;
+                margin: 70px;
+            }
+        }
+
+        main {
+            width: 100%;
+            display: flex;
+            align-items: stretch;
+            justify-content: space-around;
+        }
+
+        .bloco1 {
+            width: 150px;
+            height: 100px;
+            border: 0.5px solid #000;
+            background-color: #00c;
+        }
+
+        .bloco2 {
+            width: 150px;
+            height: 100px;
+            border: 0.5px solid #000;
+            background-color: #f00;
+        }
+
+        .bloco3 {
+            width: 150px;
+            height: 100px;
+            border: 0.5px solid #000;
+            background-color: #e99;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li id="posX">PosiçãoX:</li>
+            <li id="posY">PosiçãoY:</li>
+            <li id="altura">Altura:</li>
+            <li id="largura">Largura:</li>
+        </ul>
+    </header>
+    <main>
+        <div class="bloco1"></div>
+        <div class="bloco2"></div>
+        <div class="bloco3"></div>
+    </main>
+
+    <script>
+        const bloco1 = document.querySelector(".bloco1")
+        const bloco2 = document.querySelector(".bloco2")
+        const bloco3 = document.querySelector(".bloco3")
+
+        const posX = document.querySelector("#posX")
+        const posY = document.querySelector("#posY")
+
+        const altura = document.querySelector("#altura")
+        const largura = document.querySelector("#largura")
+
+        function informacoesDosElementos(element) {
+            const DomInfo = element.getBoundingClientRect()
+            posX.innerHTML = `PosiçãoX: ${parseInt(DomInfo.x)} px`
+            posY.innerHTML = `PosiçãoY: ${parseInt(DomInfo.y)} px`
+            altura.innerHTML = `Altura: ${parseInt(DomInfo.height)} px`
+            largura.innerHTML = `Largura: ${parseInt(DomInfo.width)} px`
+        }
+
+        bloco1.accessKey = "1"
+
+        bloco2.accessKey = "2"
+        
+        bloco3.accessKey = "3"
+
+        bloco1.addEventListener("click", event => {
+            informacoesDosElementos(event.target)
+        })
+
+        bloco2.addEventListener("click", event => {
+            informacoesDosElementos(event.target)
+        })
+
+        bloco3.addEventListener("click", event => {
+            informacoesDosElementos(event.target)
+        })
+    </script>
+</body>
+
+</html>

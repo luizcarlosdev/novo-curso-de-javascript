@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu form login</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="exportar.js" defer type="module"></script>
+</head>
+
+<body>
+    <form>
+        <div class="input">
+            <label for="f_nome">Digite o seu nome completo</label>
+            <input type="text" id="f_nome" minlength="3" maxlength="30" required>
+        </div>
+
+        <div class="input">
+            <label for="f_idade">Digite a sua idade</label>
+            <input type="number" id="f_idade" min="15" max="85" required>
+        </div>
+
+        <div class="button">
+            <button id="button" onclick="event => event.preventDefault()">Enviar Formulário</button>
+        </div>
+    </form>
+</body>
+
+</html>

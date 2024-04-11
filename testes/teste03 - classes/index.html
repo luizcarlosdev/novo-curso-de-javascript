@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carros</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <form>
+        <label for="f_nome">Nome do carro</label>
+        <input type="text" name="f_nome" id="f_nome">
+        <label for="f_portas">N° de portas</label>
+        <input type="number" name="f_portas" id="f_portas">
+        <label for="f_municao">Munição</label>
+        <input type="number" name="f_municao" id="f_municao" disabled>
+        <label for="f_blindagem">Blindagem</label>
+        <input type="number" name="f_blindagem" id="f_blindagem" disabled>
+
+        <div id="radio">
+            <div class="input">
+                <input type="radio" name="f_tipo" id="f_militar">
+                <label for="f_militar">Militar</label>
+            </div>
+            <div class="input">
+                <input type="radio" name="f_tipo" id="f_normal">
+                <label for="f_normal">Normal</label>
+            </div>
+        </div>
+
+        <button id="btn">Adicionar</button>
+
+        <div id="res"></div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container{
+            width: 500px;
+        }
+
+        .input{
+            position: relative;
+            width: 100%;
+            border-bottom: 2px solid #0d0d0d;
+        }
+
+        .input label{
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            transition-duration: 0.5s;
+            transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+            transition-property: all;
+        }
+
+        .input input{
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+
+        .input input:focus ~ label,
+        .input input:valid ~ label{
+            transform: translateY(-30px);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input">
+            <input type="text" required name="" id="texto">
+            <label for="texto">Meu texto</label>
+        </div>
+    </div>
+</body>
+</html>

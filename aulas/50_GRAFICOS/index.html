@@ -28,16 +28,16 @@
     <script>
         const ctx = document.getElementById('grafico1');
 
-        let valoresX = ["Brasil","Estados Unidos","Africa"];
-        let valoresA = [10,20,30,90];
+        let valoresX = ["Disponibilidade", "Qualidade", "Performance"];
+        let valores = [0, 0, 0];
 
-        new Chart(ctx, {
+        let grafico1 = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: valoresX,
                 datasets: [{
                     label: '# of Votes',
-                    data: valoresA,
+                    data: valores,
                     borderWidth: 1
                 }]
             },
@@ -49,6 +49,21 @@
                 }
             }
         });
+
+        const endPoint = "https://048bf990-08a2-4bf3-b66e-6678f13d3a98-00-3t9uqtugat1me.worf.replit.dev/";
+
+        const buscarValores = () => {
+            fetch(endPoint).then(res => res.json()).then(res => {
+                valores[0] = res.disponibilidade;
+                valores[1] = res.qualidade;
+                valores[2] = res.performance;
+                grafico1.update()
+            }).catch(erro => {
+                console.log("ERROR: " + erro)
+            })
+        }
+
+        let intervalor = setInterval(buscarValores, 3000)
     </script>
 </body>
 

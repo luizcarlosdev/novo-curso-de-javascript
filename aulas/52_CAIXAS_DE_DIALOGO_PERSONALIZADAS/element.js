@@ -3,8 +3,15 @@ import { Cxmsg } from "./script.js";
 const config = {
   cor: "#48f",
   tipo: "sn",
+  textos: ["SIM","NÃO"],
   comando_sn: () => {}
 };
+
+// config.tipo = "ok"
+
+const fsim = () => {
+  console.log("botao sim!")
+}
 
 const criarRGB = () => {
   let r = Math.floor(Math.random() * 256);
@@ -22,5 +29,6 @@ const colorRed = {
 const btn_mostrarcxmsg = document.querySelector("#btn_mostrarcxmsg");
 
 btn_mostrarcxmsg.addEventListener("click", () => {
+  config.comando_sn = () => {fsim()};
   Cxmsg.mostrar(config,"JavaScript", "Aula 52");
 });

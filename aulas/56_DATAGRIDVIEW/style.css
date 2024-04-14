@@ -1,0 +1,93 @@
+* {
+    border: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.dataGridView {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.dataGridViewTitulos {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #138;
+    color: #fff;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.dataGridViewTitulos div,
+.dataGridViewLinha div {
+    padding: 5px;
+}
+
+.c1 {
+    width: 100px;
+    text-align: center;
+}
+
+.c2 {
+    width: 150px;
+    text-align: center;
+}
+
+.c3 {
+    width: 150px;
+    text-align: center;
+}
+
+.c4 {
+    width: 150px;
+    text-align: center;
+}
+
+.c5 {
+    width: 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 5px;
+}
+
+.dataGridViewDados {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.dataGridViewLinha {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .5s ease;
+}
+
+.dataGridViewLinha:hover {
+    background-color: #088 !important;
+    color: #fff !important;
+    cursor: pointer;
+}
+
+.dataGridViewLinha:nth-child(odd) {
+    background-color: #ccc;
+}
+
+.dataGridViewLinha:nth-child(even) {
+    background-color: #eee;
+}

@@ -4,6 +4,8 @@ class Login {
   static nomeLogado = null;
   static acessoLogado = null;
   static estiloCss = null;
+  static callback_ok = null;
+  static callback_notOk = null;
   static config = {
     cor: "#048",
     img: "./logo_cfbcursos.png",
@@ -12,11 +14,13 @@ class Login {
     "https://048bf990-08a2-4bf3-b66e-6678f13d3a98-00-3t9uqtugat1me.worf.replit.dev/";
   // https://048bf990-08a2-4bf3-b66e-6678f13d3a98-00-3t9uqtugat1me.worf.replit.dev/?matricula=123&senha=321
 
-  static login = (config = null) => {
+  static login = (callback_ok, callback_notOk, config = null) => {
     if (config != null) {
       this.config = config;
     }
     //this.endPoint += `?matricula=${mat}&senha=${pas}`;
+    this.callback_ok = () => {callback_ok()};
+    this.callback_notOk = () => {callback_notOk()}
     this.estiloCss =
       " .fundoLogin {display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh; position: absolute; top: 0px; left: 0px;background-color: rgba(0, 0, 0, 0.75); box-sizing: border-box;}" +
       " .baseLogin {height: 50%; display: flex; justify-content: center; align-items: stretch; width: 50%; box-sizing: inherit;}" +
@@ -180,20 +184,16 @@ class Login {
           this.matLogado = mat;
           this.nomeLogado = res.nome;
           this.acessoLogado = res.acesso;
-          this.fechar()
+          this.callback_ok();
+          this.fechar();
         } else {
           this.logado = false;
           this.matLogado = null;
           this.nomeLogado = null;
           this.acessoLogado = null;
-          alert("Login não efetuado! Username ou senha incorretos")
+          this.callback_notOk();
         }
       });
-    // if (mat == "123" && pas == "321") {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
   };
 
   static fechar = () => {

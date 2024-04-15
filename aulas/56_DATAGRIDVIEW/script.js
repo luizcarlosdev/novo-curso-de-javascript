@@ -41,6 +41,9 @@ const dataGridView = (configDataGridView) => {
             imgDel.setAttribute("class","dataGridViewcone");
             imgDel.setAttribute("src","./deletar.svg")
             c5.appendChild(imgDel);
+            imgDel.addEventListener("click", event => {
+                console.log(event.target.parentNode.parentNode.firstChild.innerHTML)
+            })
 
             const imgEdit = document.createElement("img");
             imgEdit.setAttribute("class","dataGridViewcone");

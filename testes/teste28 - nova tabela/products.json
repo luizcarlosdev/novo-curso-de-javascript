@@ -1,0 +1,32 @@
+[
+    {
+        "id":"01",
+        "produto":"Videogame",
+        "modelo":"Playstation",
+        "marca":"Sony"
+    },
+    {
+        "id":"02",
+        "produto":"Monitor",
+        "modelo":"LG Monitor",
+        "marca":"LG"
+    },
+    {
+        "id":"03",
+        "produto":"Notebook",
+        "modelo":"Samsung Book I3",
+        "marca":"Samsung"
+    },
+    {
+        "id":"04",
+        "produto":"Fone Bluetooth",
+        "modelo":"Air Pods",
+        "marca":"Apple"
+    },
+    {
+        "id":"05",
+        "produto":"Mouse Gamer",
+        "modelo":"M90",
+        "marca":"Logitech"
+    }
+]

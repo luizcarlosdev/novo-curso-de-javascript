@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criando Data Grid View</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="script.js" defer type="module"></script>
 </head>
 
 <body>
@@ -20,6 +20,65 @@
         </div>
 
         <div id="dataGridViewDados" class="dataGridViewDados">
+        </div>
+
+        <div id="janelaView" class="janelaView ocultar">
+            <div id="view" class="view">
+
+                <div class="campo">
+                    <label for="f_id">ID</label>
+                    <input type="text" id="f_id" readonly>
+                </div>
+
+                <div class="campo">
+                    <label for="f_produto">Produto</label>
+                    <input type="text" id="f_produto" readonly>
+                </div>
+
+                <div class="campo">
+                    <label for="f_marca">Marca</label>
+                    <input type="text" id="f_marca" readonly>
+                </div>
+
+                <div class="campo">
+                    <label for="f_modelo">Modelo</label>
+                    <input type="text" id="f_modelo" readonly>
+                </div>
+
+                <div id="rodape" class="campo rodape">
+                    <button id="btn-ok" class="btn">Ok</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="janelaEditar" class="janelaView ocultar">
+            <div id="view" class="view">
+
+                <div class="campo">
+                    <label for="f_ideditar">ID</label>
+                    <input type="text" id="f_ideditar" readonly>
+                </div>
+
+                <div class="campo">
+                    <label for="f_produtoeditar">Produto</label>
+                    <input type="text" id="f_produtoeditar">
+                </div>
+
+                <div class="campo">
+                    <label for="f_marcaeditar">Marca</label>
+                    <input type="text" id="f_marcaeditar">
+                </div>
+
+                <div class="campo">
+                    <label for="f_modeloeditar">Modelo</label>
+                    <input type="text" id="f_modeloeditar">
+                </div>
+
+                <div id="rodape" class="campo rodape">
+                    <button id="btn-gravar" class="btn">Gravar</button>
+                    <button id="btn-cancelar" class="btn">Cancelar</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>

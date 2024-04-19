@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação simples de email</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        section {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 6px;
+
+            & #erro {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                & #msg_error {
+                    text-transform: capitalize;
+                    font-weight: bold;
+                }
+            }
+
+            & input[type="text"] {
+                padding: 10px 15px;
+            }
+
+            & #btn_verificar {
+                height: 40px;
+                margin-top: 12px;
+                background-color: black;
+                color: white;
+                border: none;
+                padding: 6px 22px;
+                cursor: pointer;
+            }
+
+            .error {
+                background-color: rgba(255, 0, 0, 0.164);
+                border: 2px solid #f00 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div id="erro">
+            <label for="f_email">Email:</label>
+            <span id="msg_error">I don't speak english!</span>
+        </div>
+        <input type="text" id="f_email">
+        <input type="button" value="Verificar Email" id="btn_verificar">
+    </section>
+
+    <script>
+        const msg_error = document.getElementById("msg_error");
+        const f_email = document.getElementById("f_email");
+        const btn_verificar = document.getElementById("btn_verificar");
+
+        const validarEmail = () => {
+            const emailValue = f_email.value;
+            if (emailValue.match(/^[A-Z|0-9]+[@][gmail]{1}[.][com]{3}$/ig)) {
+                console.log("OK")
+            } else {
+                console.log("Tente de Novo!!")
+            }
+        };
+
+        f_email.addEventListener("input", validarEmail);
+    </script>
+</body>
+
+</html>

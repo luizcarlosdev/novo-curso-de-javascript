@@ -53,3 +53,60 @@
     height: 100%;
     overflow-x: hidden;
 }
+
+/* Novo */
+#novo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.elementosForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 80%;
+    margin-top: 20px;
+} 
+.botoesForm {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.campoForm {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.campoForm input {
+    width: inherit;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.btnGeral {
+    background-color: #248;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 1px;
+    border: 4px solid #248;
+    transition: all .5s ease;
+}
+
+.btnGeral:active {
+    transform: scale(.9);
+    box-shadow: 0px 0px 12px 3px #248 inset 0px 0px 12px 3px;
+}
+
+/*******************/

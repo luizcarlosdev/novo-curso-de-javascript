@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .caixa{
+            width: 350px;
+            height: 134px;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 14px 0px;
+        }
+
+        #c1 {
+            background-color: rgba(167,64,86,24);
+        }
+
+        #c2 {
+            background-color: rgba(200,200,112,44);
+        }
+
+        #c3 {
+            background-color: rgba(166,166,324);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="c1" class="caixa" style="background-color: rgba(167,64,86,24);">
+        <p>Meu primeiro texto teste</p>
+    </div>
+
+    <div id="c2" class="caixa">
+        <p>Meu segundo texto teste</p>
+    </div>
+
+    <div id="c3" class="caixa">
+        <p>Meu terceiro texto teste</p>
+    </div>
+
+    <script>
+        Array.from(document.querySelectorAll(".caixa")).map(caixa => {
+            console.log(caixa.style.background)
+            console.log(caixa.querySelector("p").innerHTML)
+            console.log(`Cor:${caixa.style.backgroundColor}`)
+        });
+    </script>
+    
+</body>
+
+</html>
